@@ -1,0 +1,260 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".Activity.EditAddressActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header Layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/imageBack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                app:srcCompat="@drawable/back_icon" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1.8"
+                android:text="     Edit Address"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginVertical="8dp" />
+
+        <!-- Country or Region Label -->
+        <TextView
+            android:id="@+id/tvCountryRegionLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Country or region"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Country or Region EditText -->
+        <EditText
+            android:id="@+id/etCountryRegion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter country or region"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- First Name Label -->
+        <TextView
+            android:id="@+id/tvFirstNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="First Name"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- First Name EditText -->
+        <EditText
+            android:id="@+id/etFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter first name"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Last Name Label -->
+        <TextView
+            android:id="@+id/tvLastNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Last Name"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Last Name EditText -->
+        <EditText
+            android:id="@+id/etLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter last name"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Street Address Label -->
+        <TextView
+            android:id="@+id/tvStreetAddressLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Street Address"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Street Address EditText -->
+        <EditText
+            android:id="@+id/etStreetAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter street address"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Street Address 2 Label -->
+        <TextView
+            android:id="@+id/tvStreetAddress2Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Street Address 2 (Optional)"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Street Address 2 EditText -->
+        <EditText
+            android:id="@+id/etStreetAddress2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter street address 2"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- City Label -->
+        <TextView
+            android:id="@+id/tvCityLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="City"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- City EditText -->
+        <EditText
+            android:id="@+id/etCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter city"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- State/Province/Region Label -->
+        <TextView
+            android:id="@+id/tvStateProvinceRegionLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="State/Province/Region"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- State/Province/Region EditText -->
+        <EditText
+            android:id="@+id/etStateProvinceRegion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter state/province/region"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Zip Code Label -->
+        <TextView
+            android:id="@+id/tvZipCodeLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Zip Code"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Zip Code EditText -->
+        <EditText
+            android:id="@+id/etZipCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter zip code"
+            android:inputType="number"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Phone Number Label -->
+        <TextView
+            android:id="@+id/tvPhoneNumberLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Phone Number EditText -->
+        <EditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter phone number"
+            android:inputType="phone"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Add Address Button -->
+        <Button
+            android:id="@+id/btnAddAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textSize="20sp"
+            android:backgroundTint="#2196F3"
+            android:text="Add Address" />
+
+    </LinearLayout>
+
+</ScrollView>

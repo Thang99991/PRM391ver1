@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/image_warning"
+            android:layout_width="78dp"
+            android:layout_height="67dp"
+            android:layout_gravity="center"
+            android:src="@drawable/warning_icon" />
+
+        <TextView
+            android:id="@+id/text_confirm_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="Are you sure you want to delete this address?"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="376dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#4D92CF"
+            android:text="Delete" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="374dp"
+            android:layout_height="79dp"
+            android:layout_marginTop="8dp"
+
+            android:backgroundTint="#4D92CF"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,26 @@
+<!-- res/layout/item_layout.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tvResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="145 Result"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center_vertical"/>
+
+    <Spinner
+        android:id="@+id/spinnerWallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:entries="@array/wallet_options"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="16dp"/>
+
+</LinearLayout>

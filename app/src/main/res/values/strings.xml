@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ProjectPRM</string>
+        <string-array name="wallet_options">
+            <item>Wallet</item>
+            <item>Belt</item>
+            <item>Option 2</item>
+            <item>Option 3</item>
+        </string-array>
+
+</resources>
