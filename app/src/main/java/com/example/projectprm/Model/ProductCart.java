@@ -7,6 +7,13 @@ public class ProductCart {
     private String img;
     private String price;
 
+    public ProductCart(String id, String name, String img, String price) {
+        this.id = id;
+        this.name = name;
+        this.img = img;
+        this.price = price;
+    }
+
     // Getters and setters
     public String getId() {
         return id;
