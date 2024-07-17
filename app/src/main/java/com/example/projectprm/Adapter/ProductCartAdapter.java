@@ -2,6 +2,7 @@ package com.example.projectprm.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,21 +12,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.example.projectprm.Activity.ProductDetailActivity;
 import com.example.projectprm.Model.ProductCart;
 import com.example.projectprm.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ProductCartAdapter extends RecyclerView.Adapter<ProductCartAdapter.ProductViewHolder> {
 
     private List<ProductCart> productList;
+    private List<String> imageUrls;
+    private Handler handler = new Handler();
+    private int currentPosition = 0;
+
     private Context context;
 
     public ProductCartAdapter(Context context, List<ProductCart> productList) {
         this.context = context;
         this.productList = productList;
+        startAutomaticImageSwitch();
+
     }
 
     @NonNull
@@ -39,16 +48,47 @@ public class ProductCartAdapter extends RecyclerView.Adapter<ProductCartAdapter.
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         ProductCart product = productList.get(position);
         holder.titleTextView.setText(product.getName());
-        holder.priceTextView.setText(product.getPrice());
-        Picasso.get().load(product.getImg()).into(holder.imageView);
+
+        double price = Double.parseDouble(product.getPrice());
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+        String formattedPrice = formatter.format(price) + " VND";
+        holder.priceTextView.setText(formattedPrice);
+
+        List<String> imageUrls = product.getImg();
+        Picasso.get().load(imageUrls.get(currentPosition % imageUrls.size())).into(holder.imageView);
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProductDetailActivity.class);
             intent.putExtra("product_id", product.getId());
             context.startActivity(intent);
         });
+
+
+
+
+
+    }
+    private void startAutomaticImageSwitch() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                currentPosition = (currentPosition + 1) % getMaxImageCount(); // Chuyển đổi giữa các ảnh
+                notifyDataSetChanged(); // Cập nhật lại RecyclerView để hiển thị ảnh mới
+                handler.postDelayed(this, 5000); // Lặp lại sau mỗi 5 giây
+            }
+        }, 15000); // Bắt đầu sau 15 giây
+
+
+
     }
 
+    private int getMaxImageCount() {
+        int maxCount = 0;
+        for (ProductCart product : productList) {
+            maxCount = Math.max(maxCount, product.getImg().size());
+        }
+        return maxCount;
+    }
     @Override
     public int getItemCount() {
         return productList.size();
