@@ -1,5 +1,7 @@
 package com.example.projectprm.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,8 +27,10 @@ public class ProductCartAdapter extends RecyclerView.Adapter<ProductCartAdapter.
     private Handler handler = new Handler();
     private int currentPosition = 0;
 
+    private Context context;
 
-    public ProductCartAdapter(List<ProductCart> productList) {
+    public ProductCartAdapter(Context context, List<ProductCart> productList) {
+        this.context = context;
         this.productList = productList;
         startAutomaticImageSwitch();
 
@@ -51,6 +55,17 @@ public class ProductCartAdapter extends RecyclerView.Adapter<ProductCartAdapter.
 
         List<String> imageUrls = product.getImg();
         Picasso.get().load(imageUrls.get(currentPosition % imageUrls.size())).into(holder.imageView);
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ProductDetailActivity.class);
+            intent.putExtra("product_id", product.getId());
+            context.startActivity(intent);
+        });
+
+
+
+
+
     }
     private void startAutomaticImageSwitch() {
         handler.postDelayed(new Runnable() {
@@ -61,6 +76,9 @@ public class ProductCartAdapter extends RecyclerView.Adapter<ProductCartAdapter.
                 handler.postDelayed(this, 5000); // Lặp lại sau mỗi 5 giây
             }
         }, 15000); // Bắt đầu sau 15 giây
+
+
+
     }
 
     private int getMaxImageCount() {

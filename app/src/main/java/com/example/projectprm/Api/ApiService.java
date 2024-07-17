@@ -11,8 +11,8 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
-import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiService {
     @GET("product")
@@ -23,4 +23,12 @@ public interface ApiService {
 
     @PATCH("user")
     Call<Account> updateAccount(@Body Account account);
+
+    @GET("product/get/{id}")
+    Call<ProductCart> getProductById(@Path("id") String id);
+    @GET("product/search")
+    Call<List<ProductCart>> searchProduct(
+            @Query("name") String name,
+            @Query("category_id") String categoryId
+    );
 }
