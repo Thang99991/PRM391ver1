@@ -5,26 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Include search bar at the top -->
-    <include
-        android:id="@+id/search_bar"
-        layout="@layout/search_bar"
+    <!-- EditText for searching by product name -->
+    <EditText
+        android:id="@+id/search_product_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="Search by Name"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/search_category_id"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        android:layout_margin="8dp"/>
 
-    <!-- Include fragment_category -->
-    <include
-        android:id="@+id/sort"
-        layout="@layout/sort_search"
+    <!-- EditText for searching by category ID -->
+    <EditText
+        android:id="@+id/search_category_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/search_bar"
+        android:hint="Search by Category ID"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@id/search_product_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        android:layout_margin="8dp"/>
+
+    <!-- RecyclerView to display the search results -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/search_category_id"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
+    <!-- EditText để nhập từ khóa tìm kiếm -->
     <EditText
         android:id="@+id/search_product"
         android:layout_width="0dp"
@@ -19,6 +20,17 @@
         android:layout_marginEnd="8dp"
         android:inputType="text" />
 
+    <!-- Nút Search để kích hoạt tìm kiếm -->
+    <ImageView
+        android:id="@+id/search_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/search_ic"
+        android:background="?attr/selectableItemBackground"
+        android:padding="8dp"
+        android:layout_gravity="center_vertical" />
+
+    <!-- ImageView cho biểu tượng yêu thích -->
     <ImageView
         android:id="@+id/favourite_icon"
         android:layout_width="40dp"
@@ -27,6 +39,8 @@
         android:background="?attr/selectableItemBackground"
         android:padding="8dp"
         android:layout_gravity="center_vertical" />
+
+    <!-- ImageView cho biểu tượng thông báo -->
     <ImageView
         android:id="@+id/notification_icon"
         android:layout_width="40dp"

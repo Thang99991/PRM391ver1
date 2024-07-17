@@ -4,19 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectprm.Adapter.ProductCartAdapter;
@@ -40,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ProductCartAdapter productAdapter;
     private List<ProductCart> productList;
     private LinearLayout lnAccount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchProductData() {
-        try{
+        try {
             ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
             Call<List<ProductCart>> call = apiService.getProducts();
 
@@ -77,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<List<ProductCart>> call, Response<List<ProductCart>> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         productList = response.body();
-                        productAdapter = new ProductCartAdapter(productList);
+                        productAdapter = new ProductCartAdapter(MainActivity.this, productList);
 
                         recyclerView.setAdapter(productAdapter);
 
@@ -91,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Failed to load products", Toast.LENGTH_SHORT).show();
                 }
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.d("Loi", e.getMessage());
         }
 
