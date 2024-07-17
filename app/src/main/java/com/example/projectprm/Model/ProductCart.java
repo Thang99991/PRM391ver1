@@ -4,13 +4,13 @@ package com.example.projectprm.Model;
 public class ProductCart {
     private String id;
     private String name;
-    private String img;
+    private String img_url;
     private String price;
 
     public ProductCart(String id, String name, String img, String price) {
         this.id = id;
         this.name = name;
-        this.img = img;
+        this.img_url = img;
         this.price = price;
     }
 
@@ -32,11 +32,11 @@ public class ProductCart {
     }
 
     public String getImg() {
-        return img;
+        return img_url;
     }
 
     public void setImg(String img) {
-        this.img = img;
+        this.img_url = img;
     }
 
     public String getPrice() {

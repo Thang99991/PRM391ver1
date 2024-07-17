@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.landing_page);
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+
+        recyclerView.setLayoutManager(layoutManager);
         productList = new ArrayList<>();
 
         // Fetch data from API
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     if (response.isSuccessful() && response.body() != null) {
                         productList = response.body();
                         productAdapter = new ProductCartAdapter(productList);
+
                         recyclerView.setAdapter(productAdapter);
 
                     } else {

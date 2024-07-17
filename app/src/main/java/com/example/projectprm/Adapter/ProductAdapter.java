@@ -27,19 +27,11 @@ public class ProductAdapter extends ArrayAdapter<Product> {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item_product, parent, false);
         }
-
-        // Get the Product object located at this position in the list
         Product currentProduct = getItem(position);
-
-        // Find the ImageView in the list_item_product.xml layout with the ID imgProduct
         ImageView imgProduct = listItemView.findViewById(R.id.imgProduct);
         imgProduct.setImageResource(currentProduct.getImageResId());
-
-        // Find the TextView in the list_item_product.xml layout with the ID tvProductName
         TextView tvProductName = listItemView.findViewById(R.id.tvProductName);
         tvProductName.setText(currentProduct.getName());
-
-        // Find the TextView in the list_item_product.xml layout with the ID tvProductPrice
         TextView tvProductPrice = listItemView.findViewById(R.id.tvProductPrice);
         tvProductPrice.setText(currentProduct.getPrice());
 
