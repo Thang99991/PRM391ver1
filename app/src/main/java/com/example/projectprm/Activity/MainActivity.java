@@ -1,9 +1,11 @@
 package com.example.projectprm.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,9 +22,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.projectprm.Adapter.ProductCartAdapter;
 import com.example.projectprm.Api.ApiService;
 import com.example.projectprm.Api.RetrofitClient;
+import com.example.projectprm.Model.Account;
 import com.example.projectprm.Model.ProductCart;
 import com.example.projectprm.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProductCartAdapter productAdapter;
     private List<ProductCart> productList;
-
+    private LinearLayout lnAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,18 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(layoutManager);
         productList = new ArrayList<>();
+
+        lnAccount = findViewById(R.id.lnAccount);
+        lnAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                Account account = (Account) getIntent().getSerializableExtra("account");
+                intent.putExtra("account", (Serializable) account);
+
+                startActivity(intent);
+            }
+        });
 
         // Fetch data from API
         fetchProductData();
