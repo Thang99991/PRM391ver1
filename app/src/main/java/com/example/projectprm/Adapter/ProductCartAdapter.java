@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.projectprm.Activity.ProductDetailActivity;
 import com.example.projectprm.Model.ProductCart;
 import com.example.projectprm.R;
 import com.squareup.picasso.Picasso;
