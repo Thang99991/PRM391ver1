@@ -18,7 +18,7 @@
         android:padding="8dp"
         android:background="@color/white">
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageBack"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
@@ -70,6 +70,8 @@
             android:layout_gravity="center_vertical" />
 
         <EditText
+            android:id="@+id/etChangeEmail"
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

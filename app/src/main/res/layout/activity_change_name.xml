@@ -54,6 +54,8 @@
         android:layout_marginTop="16dp" />
 
     <EditText
+        android:id="@+id/etFirstName"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your first name"
@@ -73,6 +75,8 @@
         android:layout_marginTop="24dp" />
 
     <EditText
+        android:id="@+id/etLastName"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your last name"

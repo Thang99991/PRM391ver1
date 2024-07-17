@@ -1,16 +1,18 @@
 package com.example.projectprm.Model;
 
 
+import java.util.List;
+
 public class ProductCart {
     private String id;
     private String name;
-    private String img_url;
+    private List<String> image_url;
     private String price;
 
-    public ProductCart(String id, String name, String img, String price) {
+    public ProductCart(String id, String name, List<String> img, String price) {
         this.id = id;
         this.name = name;
-        this.img_url = img;
+        this.image_url = img;
         this.price = price;
     }
 
@@ -31,12 +33,12 @@ public class ProductCart {
         this.name = name;
     }
 
-    public String getImg() {
-        return img_url;
+    public List<String> getImg() {
+        return image_url;
     }
 
-    public void setImg(String img) {
-        this.img_url = img;
+    public void setImg(List<String> img) {
+        this.image_url = img;
     }
 
     public String getPrice() {
