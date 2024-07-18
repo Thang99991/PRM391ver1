@@ -44,32 +44,15 @@
         android:padding="16dp"
         tools:ignore="MissingClass">
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:progress="0"
-            android:max="100"
-            android:indeterminate="false"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressTint="@color/black" />
-
         <TextView
-            android:id="@+id/tvState"
+            android:id="@+id/tvStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:text="State: Not Started"
+            android:text="Status: PENDING"
             android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/btnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:text="Next" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,8 +64,8 @@
         <!-- Product List -->
         <ListView
             android:id="@+id/lvProducts"
-            android:layout_width="433dp"
-            android:layout_height="251dp"
+            android:layout_width="348dp"
+            android:layout_height="248dp"
             android:layout_marginTop="8dp"
             android:background="@android:color/white"
             android:divider="@android:color/darker_gray"

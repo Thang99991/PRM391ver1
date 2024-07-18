@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         lnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(MainActivity.this, AccountActivity.class);
                 Account account = (Account) getIntent().getSerializableExtra("account");
                 intent.putExtra("account", (Serializable) account);
                 startActivity(intent);

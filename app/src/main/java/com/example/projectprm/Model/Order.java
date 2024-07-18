@@ -1,67 +1,99 @@
 package com.example.projectprm.Model;
 
-public class Order {
-    private String orderId;
-    private String orderTime;
-    private String orderStatus;
-    private String items;
-    private String price;
-    private String name;
+import java.io.Serializable;
 
-    public Order(String orderId, String orderTime, String orderStatus, String items, String price, String name) {
-        this.orderId = orderId;
-        this.orderTime = orderTime;
-        this.orderStatus = orderStatus;
-        this.items = items;
-        this.price = price;
-        this.name = name;
+public class Order  implements Serializable {
+    private  String id;
+    private  String user_id;
+    private String quantity;
+    private String order_code;
+    private  String product_code;
+    private String  delivery_cost  ;
+
+    private String  total_cost  ;
+
+    private String  delivery_address  ;
+    private String  status  ;
+    private String  created_at  ;
+
+
+    public String getId() {
+        return id;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public String getOrderTime() {
-        return orderTime;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public void setOrderTime(String orderTime) {
-        this.orderTime = orderTime;
+    public String getQuantity() {
+        return quantity;
     }
 
-    public String getOrderStatus() {
-        return orderStatus;
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
+    public String getOrder_code() {
+        return order_code;
     }
 
-    public String getItems() {
-        return items;
+    public void setOrder_code(String order_code) {
+        this.order_code = order_code;
     }
 
-    public void setItems(String items) {
-        this.items = items;
+    public String getProduct_code() {
+        return product_code;
     }
 
-    public String getPrice() {
-        return price;
+    public void setProduct_code(String product_code) {
+        this.product_code = product_code;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public String getDelivery_cost() {
+        return delivery_cost;
     }
 
-    public String getName() {
-        return name;
+    public void setDelivery_cost(String delivery_cost) {
+        this.delivery_cost = delivery_cost;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getTotal_cost() {
+        return total_cost;
+    }
+
+    public void setTotal_cost(String total_cost) {
+        this.total_cost = total_cost;
+    }
+
+    public String getDelivery_address() {
+        return delivery_address;
+    }
+
+    public void setDelivery_address(String delivery_address) {
+        this.delivery_address = delivery_address;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 }

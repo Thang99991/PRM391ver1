@@ -1,23 +1,28 @@
 package com.example.projectprm.Adapter;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.projectprm.Model.Account;
 import com.example.projectprm.Model.Order;
 import com.example.projectprm.R;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class OrderAdapter extends BaseAdapter {
     private Context context;
     private List<Order> orderList;
+    private Intent intent;
 
-    public OrderAdapter(Context context, List<Order> orderList) {
+    public OrderAdapter(Context context, List<Order> orderList,Intent intent) {
         this.context = context;
         this.orderList = orderList;
+        this.intent = intent;
     }
 
     @Override
@@ -42,7 +47,7 @@ public class OrderAdapter extends BaseAdapter {
         }
 
         Order order = orderList.get(position);
-
+        Account account = (Account) intent.getSerializableExtra("account");
         TextView tvOrderId = convertView.findViewById(R.id.tvOrderIdLabel);
         TextView tvOrderTime = convertView.findViewById(R.id.tvOrderTime);
         TextView tvOrderStatus = convertView.findViewById(R.id.tvOrderStatus);
@@ -50,13 +55,18 @@ public class OrderAdapter extends BaseAdapter {
         TextView tvPrice = convertView.findViewById(R.id.tvPrice);
         TextView tvName = convertView.findViewById(R.id.tvName);
 
-        tvOrderId.setText(order.getOrderId());
-        tvOrderTime.setText(order.getOrderTime());
-        tvOrderStatus.setText(order.getOrderStatus());
-        tvItems.setText(order.getItems());
-        tvPrice.setText(order.getPrice());
-        tvName.setText(order.getName());
+        tvOrderId.setText(order.getId());
+        tvOrderTime.setText(order.getCreated_at());
+        tvOrderStatus.setText(order.getStatus());
+        tvItems.setText(order.getQuantity());
+
+        double price = Double.parseDouble(order.getTotal_cost());
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+        String formattedPrice = formatter.format(price) + " VND";
+        tvPrice.setText(formattedPrice);
+        tvName.setText(account.getUsername());
 
         return convertView;
     }
+
 }

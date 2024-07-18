@@ -16,6 +16,7 @@ import com.example.projectprm.Activity.AddressActivity;
 import com.example.projectprm.Activity.ConfirmAddressActivity;
 import com.example.projectprm.Activity.EditAddressActivity;
 import com.example.projectprm.Activity.ProfileActivity;
+import com.example.projectprm.Model.Account;
 import com.example.projectprm.Model.Address;
 import com.example.projectprm.R;
 
@@ -24,11 +25,14 @@ import java.util.List;
 public class AddressAdapter extends BaseAdapter {
     private Context context;
     private List<Address> addressList;
+    private Intent intent;
 
-    public AddressAdapter(Context context, List<Address> addressList) {
+    public AddressAdapter(Context context, List<Address> addressList,Intent intent) {
         this.context = context;
         this.addressList = addressList;
+        this.intent = intent;
     }
+
 
     @Override
     public int getCount() {
@@ -52,6 +56,7 @@ public class AddressAdapter extends BaseAdapter {
         }
 
         Address address = addressList.get(position);
+        Account account = (Account) intent.getSerializableExtra("account");
 
         TextView tvFirstName = convertView.findViewById(R.id.tvFirstName);
         TextView tvAddress = convertView.findViewById(R.id.tvAddress);
@@ -59,15 +64,15 @@ public class AddressAdapter extends BaseAdapter {
         Button btnEdit = convertView.findViewById(R.id.btnEdit);
         ImageView imageViewDelete = convertView.findViewById(R.id.imageViewDelete);
 
-        tvFirstName.setText(address.getFirstName());
+        tvFirstName.setText(account.getUsername());
         tvAddress.setText(address.getAddress());
-        tvPhoneNumber.setText(address.getPhoneNumber());
+        tvPhoneNumber.setText(account.getPhone());
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, EditAddressActivity.class);
-                //intent.putExtra("position", position);
+                intent.putExtra("address", address);
                 ((Activity) context).startActivityForResult(intent, 1);
             }
         });
@@ -76,7 +81,7 @@ public class AddressAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ConfirmAddressActivity.class);
-                //intent.putExtra("position", position);
+                intent.putExtra("address", address);
                 ((Activity) context).startActivityForResult(intent, 1);            }
         });
 
