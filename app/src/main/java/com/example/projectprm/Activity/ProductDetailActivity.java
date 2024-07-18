@@ -128,6 +128,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    finish();
                     Toast.makeText(ProductDetailActivity.this, "Added to cart successfully", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(ProductDetailActivity.this, "Failed to add to cart", Toast.LENGTH_SHORT).show();

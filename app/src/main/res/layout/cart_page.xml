@@ -1,116 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp"
     android:background="#F9F9F9">
 
+    <!-- Your Cart Header -->
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       >
+       <ImageButton
+           android:id="@+id/btnBack"
+           android:layout_width="wrap_content"
+           android:paddingBottom="16dp"
+           android:paddingTop="10dp"
+           android:paddingRight="16dp"
+           android:layout_height="wrap_content"
+           android:background="?attr/selectableItemBackgroundBorderless"
+           android:src="@drawable/arrow_ic" />
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Your Cart"
+           android:textSize="24sp"
+           android:textStyle="bold"
+           android:paddingBottom="16dp" />
+   </LinearLayout>
+
+    <!-- RecyclerView for Cart Items -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:elevation="2dp" />
+
+    <!-- Summary Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp">
 
-        <!-- Your Cart Header -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Your Cart"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:paddingBottom="16dp" />
-
-        <!-- Cart Items Layout -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cartItemsRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-
-        <!-- Summary Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:background="#FFFFFF"
-            android:elevation="2dp">
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:layout_weight="1"
+                android:text="Items (3)"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Items (3)"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tvTotalPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="300.000 đ"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvTotalPrice"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Shipping"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="35.000 đ"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Total Price"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvTotalPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="631.000 đ"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#00A8F3" />
-            </LinearLayout>
+                android:text="300.000 đ"
+                android:textSize="16sp" />
         </LinearLayout>
 
-        <!-- Check Out Button -->
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Check Out"
-            android:textSize="16sp"
-            android:backgroundTint="#00A8F3"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="16dp"
-            android:padding="16dp" />
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Shipping"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="35.000 đ"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total Price"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTotalAllPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="631.000 đ"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#00A8F3" />
+        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+
+    <!-- Check Out Button -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check Out"
+        android:textSize="16sp"
+        android:backgroundTint="#00A8F3"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="16dp"
+        android:padding="16dp" />
+</LinearLayout>

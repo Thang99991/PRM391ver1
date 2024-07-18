@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Navigate to Cart Activity
                 Intent intent = new Intent(MainActivity.this, CartActivity.class);
+
                 startActivity(intent);
             }
         });

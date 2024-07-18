@@ -1,18 +1,19 @@
 package com.example.projectprm.Model;
 
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ProductCart {
+public class ProductCart implements Serializable {
     private String id;
     private String name;
     private List<String> image_url;
     private String price;
     private String stock;
     private String description;
-    private int quantity;
+    private String quantity;
 
-    public ProductCart(String id, String name, List<String>img, String price, String stock, String description, int quantity) {
+    public ProductCart(String id, String name, List<String>img, String price, String stock, String description, String quantity) {
         this.description = description;
         this.stock = stock;
         this.id = id;
@@ -23,11 +24,11 @@ public class ProductCart {
     }
 
     // Getters and setters
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
     public String getId() {

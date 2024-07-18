@@ -28,9 +28,10 @@
         <activity android:name=".Activity.OrderActivity"/>
         <activity android:name=".Activity.ProductDetailActivity"/>
         <activity android:name=".Activity.AccountActivity"/>
-        <activity android:name=".Activity.CartActivity"/>
+
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.CartActivity" />
 
 
         <activity

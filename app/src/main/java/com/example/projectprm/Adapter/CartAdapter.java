@@ -1,6 +1,7 @@
 package com.example.projectprm.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,65 +12,64 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projectprm.Model.Cart;
-import com.example.projectprm.Model.Product;
-import com.example.projectprm.Model.ProductCart;
+import com.example.projectprm.Model.CartItem;
 import com.example.projectprm.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
+    private List<CartItem> cartItemList;
     private Context context;
-    private List<ProductCart> cartItems;
-    private CartItemListener cartItemListener;
+    private int currentPosition = 0;
 
-    public CartAdapter(Context context, List<ProductCart> cartItems, CartItemListener cartItemListener) {
+    public CartAdapter(List<CartItem> cartItemList, Context context) {
+        this.cartItemList = cartItemList;
         this.context = context;
-        this.cartItems = cartItems;
-        this.cartItemListener = cartItemListener;
     }
 
+    @NonNull
     @Override
-    public CartViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.cart_item, parent, false);
+    public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item, parent, false);
         return new CartViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CartViewHolder holder, int position) {
-        ProductCart cartItem = cartItems.get(position);
-        holder.tvProductName.setText(cartItem.getName());
-        holder.tvProductPrice.setText(cartItem.getPrice());
+    public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
+        CartItem cartItem = cartItemList.get(position);
+        holder.tvProductName.setText(cartItem.getProduct().getName());
+        holder.tvProductPrice.setText(String.format("%,d đ", cartItem.getProduct().getPrice()));
         holder.tvQuantity.setText(String.valueOf(cartItem.getQuantity()));
+        // Load the product image using Picasso
+        List<String> imageUrls = cartItem.getProduct().getImg();
+        Picasso.get().load(imageUrls.get(currentPosition % imageUrls.size())).into(holder.imgProduct);
 
-        List<String> images = cartItem.getImg();
-        if (images != null && !images.isEmpty()) {
-            Picasso.get().load(images.get(0)).into(holder.imgProduct);
-        }
+        // Implement listeners for increase/decrease quantity and remove item if needed
+        holder.btnIncrease.setOnClickListener(v -> {
+            // Increase quantity logic here
+        });
 
-        holder.btnIncrease.setOnClickListener(v -> cartItemListener.onIncreaseQuantity(cartItem));
-        holder.btnDecrease.setOnClickListener(v -> cartItemListener.onDecreaseQuantity(cartItem));
-        holder.btnRemove.setOnClickListener(v -> cartItemListener.onRemoveItem(cartItem));
+        holder.btnDecrease.setOnClickListener(v -> {
+            // Decrease quantity logic here
+        });
+
+        holder.btnRemove.setOnClickListener(v -> {
+            // Remove item logic here
+        });
     }
 
     @Override
     public int getItemCount() {
-        return cartItems.size();
+        return cartItemList.size();
     }
 
-    public interface CartItemListener {
-        void onIncreaseQuantity(ProductCart cartItem);
-        void onDecreaseQuantity(ProductCart cartItem);
-        void onRemoveItem(ProductCart cartItem);
-    }
-
-    public class CartViewHolder extends RecyclerView.ViewHolder {
+    public static class CartViewHolder extends RecyclerView.ViewHolder {
         ImageView imgProduct;
         TextView tvProductName, tvProductPrice, tvQuantity;
         ImageButton btnIncrease, btnDecrease, btnRemove;
 
-        public CartViewHolder(View itemView) {
+        public CartViewHolder(@NonNull View itemView) {
             super(itemView);
             imgProduct = itemView.findViewById(R.id.imgProduct);
             tvProductName = itemView.findViewById(R.id.tvProductName);
@@ -81,4 +81,3 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         }
     }
 }
-

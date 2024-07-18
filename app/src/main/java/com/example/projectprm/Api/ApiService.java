@@ -2,6 +2,7 @@ package com.example.projectprm.Api;
 
 import com.example.projectprm.Model.Account;
 import com.example.projectprm.Model.Cart;
+import com.example.projectprm.Model.CartItem;
 import com.example.projectprm.Model.CartResponse;
 import com.example.projectprm.Model.Address;
 import com.example.projectprm.Model.LoginResponse;
@@ -57,6 +58,6 @@ public interface ApiService {
     @POST("cart/add")
     Call<CartResponse> AddToCart(@Body Cart cart);
 
-    @GET("cart/{id}")
-    Call<List<ProductCart>> getCartById(@Path("id") String id);
+    @GET("cart/{userId}")
+    Call<List<CartItem>> getCartById(@Path("userId") String userId);
 }
