@@ -8,7 +8,10 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.projectprm.Model.Account;
 import com.example.projectprm.R;
+
+import java.io.Serializable;
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -21,10 +24,13 @@ public class AccountActivity extends AppCompatActivity {
         btnOrder = findViewById(R.id.btnOrder);
         btnAddress = findViewById(R.id.btnAddress);
         btnPayment = findViewById(R.id.btnPayment);
+        Account account = (Account) getIntent().getSerializableExtra("account");
+
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AccountActivity.this,ProfileActivity.class);
+                intent.putExtra("account", (Serializable) account);
                 startActivity(intent);
             }
         });
@@ -40,6 +46,8 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(AccountActivity.this,OrderActivity.class);
+                intent.putExtra("account", (Serializable) account);
+
                 startActivity(intent);
             }
         });
@@ -48,6 +56,8 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(AccountActivity.this,AddressActivity.class);
+                intent.putExtra("account", (Serializable) account);
+
                 startActivity(intent);
             }
         });
@@ -56,6 +66,7 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(AccountActivity.this,PaymentActivity.class);
+                intent.putExtra("account", (Serializable) account);
                 startActivity(intent);
             }
         });
