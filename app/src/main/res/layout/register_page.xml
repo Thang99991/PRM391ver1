@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="#FFFFFF"
-    tools:context=".MainActivity">
+    >
 
     <ImageView
         android:id="@+id/logo"
@@ -34,7 +34,7 @@
         android:textSize="16sp"
         android:layout_marginBottom="20dp" />
     <EditText
-        android:id="@+id/fullName"
+        android:id="@+id/userName"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:hint="Full Name"
@@ -43,7 +43,7 @@
         android:paddingStart="10dp"
         android:background="@drawable/input_background"/>
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/newEmail"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -54,21 +54,21 @@
         android:background="@drawable/input_background"/>
 
     <EditText
-        android:id="@+id/NewPassword"
+        android:id="@+id/phone"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="Password"
-        android:inputType="textPassword"
+        android:hint="Phone"
+        android:inputType="number"
         android:drawableStart="@drawable/lock_ic"
         android:paddingStart="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/input_background"
         />
     <EditText
-        android:id="@+id/checkNewPassword"
+        android:id="@+id/newPassword"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="Password Again"
+        android:hint="Password"
         android:inputType="textPassword"
         android:drawableStart="@drawable/lock_ic"
         android:paddingStart="10dp"

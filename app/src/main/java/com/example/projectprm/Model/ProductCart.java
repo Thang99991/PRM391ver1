@@ -10,17 +10,26 @@ public class ProductCart {
     private String price;
     private String stock;
     private String description;
+    private int quantity;
 
-    public ProductCart(String id, String name, List<String>img, String price, String stock, String description) {
+    public ProductCart(String id, String name, List<String>img, String price, String stock, String description, int quantity) {
         this.description = description;
         this.stock = stock;
         this.id = id;
         this.name = name;
         this.image_url = img;
         this.price = price;
+        this.quantity = quantity;
     }
 
     // Getters and setters
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
     public String getId() {
         return id;
     }

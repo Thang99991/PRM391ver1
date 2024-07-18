@@ -11,11 +11,11 @@
 
     <!-- Home Button -->
     <LinearLayout
+        android:id="@+id/lnHome"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
-
         android:gravity="center">
 
         <ImageView
@@ -33,6 +33,7 @@
 
     <!-- Explore Button -->
     <LinearLayout
+        android:id="@+id/lnExplore"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -54,6 +55,7 @@
 
     <!-- Cart Button -->
     <LinearLayout
+        android:id="@+id/lnCart"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -76,7 +78,6 @@
     <!-- Account Button -->
     <LinearLayout
         android:id="@+id/lnAccount"
-
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -95,5 +96,4 @@
             android:textColor="#888888"
             android:textSize="12sp" />
     </LinearLayout>
-
 </LinearLayout>

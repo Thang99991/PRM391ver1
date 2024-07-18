@@ -9,7 +9,7 @@ public class Account implements Serializable {
     private String email;
     private String phone;
     private String registed_at;
-    private  String role;
+    private String role;
 
     public Account(String id, String username, String password, String email, String phone, String registed_at, String role) {
         this.id = id;
@@ -20,10 +20,20 @@ public class Account implements Serializable {
         this.registed_at = registed_at;
         this.role = role;
     }
+
+    public Account(String email, String password, String username, String phone) {
+        this.email = email;
+        this.password = password;
+        this.username = username;
+        this.phone = phone;
+    }
+
     public Account(String email, String password) {
         this.email = email;
         this.password = password;
     }
+
+    // Getter and Setter methods
 
     public String getId() {
         return id;

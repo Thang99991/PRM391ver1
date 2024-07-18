@@ -1,8 +1,11 @@
 package com.example.projectprm.Api;
 
 import com.example.projectprm.Model.Account;
+import com.example.projectprm.Model.Cart;
+import com.example.projectprm.Model.CartResponse;
 import com.example.projectprm.Model.LoginResponse;
 import com.example.projectprm.Model.ProductCart;
+import com.example.projectprm.Model.RegisterResponse;
 
 import java.util.List;
 
@@ -20,6 +23,8 @@ public interface ApiService {
 
     @POST("user/login")
     Call<LoginResponse> checkLogin(@Body Account account);
+    @POST("user/register")
+    Call<RegisterResponse> checkRegister(@Body Account account);
 
     @PATCH("user")
     Call<Account> updateAccount(@Body Account account);
@@ -31,4 +36,9 @@ public interface ApiService {
             @Query("name") String name,
             @Query("category_id") String categoryId
     );
+    @POST("cart/add")
+    Call<CartResponse> AddToCart(@Body Cart cart);
+
+    @GET("cart/{id}")
+    Call<List<ProductCart>> getCartById(@Path("id") String id);
 }

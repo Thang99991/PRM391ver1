@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="#FFFFFF"
+    android:elevation="2dp"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/imgProduct"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/wallet_img"
+        android:contentDescription="Product Image" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="8dp">
+
+        <TextView
+            android:id="@+id/tvProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Price"
+            android:textSize="14sp"
+            android:textColor="#00A8F3" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/btnDecrease"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/minus_ic"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Remove item" />
+
+            <TextView
+                android:id="@+id/tvQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_marginHorizontal="8dp"
+                android:textSize="16sp"
+                android:gravity="center" />
+
+            <ImageButton
+                android:id="@+id/btnIncrease"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/add_ic"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Add item" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnRemove"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/remove_ic"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Delete item"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp" />
+</LinearLayout>

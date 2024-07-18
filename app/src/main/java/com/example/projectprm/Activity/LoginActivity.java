@@ -1,6 +1,8 @@
 package com.example.projectprm.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -8,20 +10,18 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.projectprm.Adapter.ProductCartAdapter;
 import com.example.projectprm.Api.ApiService;
 import com.example.projectprm.Api.RetrofitClient;
 import com.example.projectprm.Model.Account;
 import com.example.projectprm.Model.LoginResponse;
-import com.example.projectprm.Model.ProductCart;
 import com.example.projectprm.R;
 
 import java.io.Serializable;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,12 +39,20 @@ public class LoginActivity extends AppCompatActivity {
         Password = findViewById(R.id.password);
 
         Button loginButton = findViewById(R.id.sign_in_button);
+        TextView registerText = findViewById(R.id.sign_up);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validateAndLogin();
+            }
+        });
 
+        registerText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -55,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(email)) {
             Email.setError("Email is required");
-            Password.requestFocus();
+            Email.requestFocus();
             return;
         }
 
@@ -71,14 +79,13 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Perform login action (e.g., send a login request to your server)
-        LoginAccount(email, password);
+        loginAccount(email, password);
     }
 
-    private void LoginAccount(String Email, String Password) {
+    private void loginAccount(String email, String password) {
         try {
             ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
-            Account account = new Account(Email, Password);
+            Account account = new Account(email, password);
 
             Call<LoginResponse> call = apiService.checkLogin(account);
 
@@ -87,6 +94,12 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         Account account1 = response.body().getUser();
+
+                        // Store userId in SharedPreferences
+                        SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString("userId", account1.getId()); // Assuming account1 has getUserId() method
+                        editor.apply();
 
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("account", (Serializable) account1);
@@ -103,10 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         } catch (Exception e) {
-            Log.d("Loi", e.getMessage());
+            Log.d("Error", e.getMessage());
         }
-
-
     }
-
 }
