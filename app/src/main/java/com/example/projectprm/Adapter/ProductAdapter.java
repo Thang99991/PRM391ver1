@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import com.example.projectprm.Model.Product;
 import com.example.projectprm.R;
+import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ProductAdapter extends ArrayAdapter<Product> {
@@ -29,11 +31,19 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         }
         Product currentProduct = getItem(position);
         ImageView imgProduct = listItemView.findViewById(R.id.imgProduct);
-        imgProduct.setImageResource(currentProduct.getImageResId());
+        //imgProduct.setImageResource(currentProduct.getImageResId());
+        imgProduct.setImageResource(R.drawable.dongho);
         TextView tvProductName = listItemView.findViewById(R.id.tvProductName);
-        tvProductName.setText(currentProduct.getName());
+        tvProductName.setText(currentProduct.getProduct_name());
         TextView tvProductPrice = listItemView.findViewById(R.id.tvProductPrice);
-        tvProductPrice.setText(currentProduct.getPrice());
+
+        double price = Double.parseDouble(currentProduct.getPrice_per());
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+        String formattedPrice = formatter.format(price) + " VND";
+        tvProductPrice.setText(formattedPrice);
+        TextView tvQuantity = listItemView.findViewById(R.id.tvQuantity);
+
+        tvQuantity.setText("Quantity: "+currentProduct.getQuantity());
 
         return listItemView;
     }

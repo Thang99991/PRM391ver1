@@ -87,7 +87,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                     tvProductName.setText(product.getName());
                     tvProductPrice.setText(product.getPrice());
                     tvDescription.setText(product.getDescription());
-                    Picasso.get().load(product.getImg()).into(imgProduct);
+                    //Picasso.get().load(product.getImg()).into(imgProduct);
                 } else {
                     Toast.makeText(ProductDetailActivity.this, "Failed to load product details", Toast.LENGTH_SHORT).show();
                 }
